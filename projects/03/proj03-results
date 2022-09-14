@@ -1,0 +1,328 @@
+Script started on 2022-01-28 13:06:32-05:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="101" LINES="24"]
+]0;jav86@gold11: ~/CS214/projects/03[01;32mjav86@gold11[00m:[01;34m~/CS214/projects/03[00m$ cat LetterGrade.java
+/* GradeSelection.java uses selection to choose from a list of cases.
+ *
+ * 
+ * Justin Voss, 1/28/22
+ ****************************************************************/
+
+import java.util.Scanner;
+
+
+
+
+   /***************************************************************
+    *  LetterGrade.java uses selection to choose from a list of cases.
+    *
+    * Receive: year, a string.
+    * PRE: year is one of {freshman, sophomore, junior, or senior}.
+    * Return: the integer code corresponding to year.
+    */
+
+
+public class LetterGrade {
+
+    public static void main(String[] args) {
+        Scanner keyboard = new Scanner(System.in);
+        System.out.println("\nEnter your score out of 100: "); // prompt
+  
+        String score = keyboard.next();      // read year
+        System.out.println(letterGrade(Integer.parseInt(score))); // display its code
+     }
+
+
+    // leterGrade uses switch to return a char value. 
+    public static char letterGrade(int average)
+    {
+        switch (average / 10)
+        {
+            case 10: case 9:
+                return 'A';
+            case 8:
+                return 'B';
+            case 7:
+                return 'C';
+            case 6:
+                return 'D';
+            default:
+                return 'F';
+        }
+    }
+    
+}]0;jav86@gold11: ~/CS214/projects/03[01;32mjav86@gold11[00m:[01;34m~/CS214/projects/03[00m$ cat LetterGrade.javaexit[K    depre     javac -deprea cation LetterGrade.java
+]0;jav86@gold11: ~/CS214/projects/03[01;32mjav86@gold11[00m:[01;34m~/CS214/projects/03[00m$ java LetterGrade
+
+Enter your score out of 100: 
+100
+A
+]0;jav86@gold11: ~/CS214/projects/03[01;32mjav86@gold11[00m:[01;34m~/CS214/projects/03[00m$ java LetterGrade
+
+Enter your score out of 100: 
+90
+A
+]0;jav86@gold11: ~/CS214/projects/03[01;32mjav86@gold11[00m:[01;34m~/CS214/projects/03[00m$ java LetterGrade80
+Error: Could not find or load main class LetterGrade80
+Caused by: java.lang.ClassNotFoundException: LetterGrade80
+]0;jav86@gold11: ~/CS214/projects/03[01;32mjav86@gold11[00m:[01;34m~/CS214/projects/03[00m$ java LetterGrade80  
+
+Enter your score out of 100: 
+80
+B
+]0;jav86@gold11: ~/CS214/projects/03[01;32mjav86@gold11[00m:[01;34m~/CS214/projects/03[00m$ java LetterGrade
+
+Enter your score out of 100: 
+70
+C
+]0;jav86@gold11: ~/CS214/projects/03[01;32mjav86@gold11[00m:[01;34m~/CS214/projects/03[00m$ java LetterGrade
+
+Enter your score out of 100: 
+709 
+C
+]0;jav86@gold11: ~/CS214/projects/03[01;32mjav86@gold11[00m:[01;34m~/CS214/projects/03[00m$ java LetterGrade
+
+Enter your score out of 100: 
+60
+D
+]0;jav86@gold11: ~/CS214/projects/03[01;32mjav86@gold11[00m:[01;34m~/CS214/projects/03[00m$ java LetterGrade
+
+Enter your score out of 100: 
+50
+F
+]0;jav86@gold11: ~/CS214/projects/03[01;32mjav86@gold11[00m:[01;34m~/CS214/projects/03[00m$ java LetterGrade
+
+Enter your score out of 100: 
+40
+F
+]0;jav86@gold11: ~/CS214/projects/03[01;32mjav86@gold11[00m:[01;34m~/CS214/projects/03[00m$ java LetterGrade
+
+Enter your score out of 100: 
+30
+F
+]0;jav86@gold11: ~/CS214/projects/03[01;32mjav86@gold11[00m:[01;34m~/CS214/projects/03[00m$ exit
+exit
+
+Script done on 2022-01-28 13:08:02-05:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2022-01-28 13:41:42-05:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="80" LINES="24"]
+]0;jav86@gold18: ~/CS214/projects/03[01;32mjav86@gold18[00m:[01;34m~/CS214/projects/03[00m$ exit./letter_gradecat letter_grade.adbgnatmake letter_grade
+gnatmake: "letter_grade" up to date.
+]0;jav86@gold18: ~/CS214/projects/03[01;32mjav86@gold18[00m:[01;34m~/CS214/projects/03[00m$ gnatmake letter_gradeexit[K./letter_gradecat letter_grade.adb
+-- letter_grade.adb converts scores to corresponding grades.
+--
+--
+-- Input: score, an integer
+-- Precondition: it is an integer
+-- Output: The grade (A,B,C,D,F) corresponding to the score.
+-- Justin Voss, 1/31/22
+----------------------------------------------------
+
+with Ada.Text_IO, Ada.Integer_Text_IO;
+use  Ada.Text_IO, Ada.Integer_Text_IO;
+
+procedure letter_grade is
+    score : Integer;
+    
+
+   function letterGrade(score: Integer ) return string is
+
+   begin
+        case (score / 10) is
+            when 10 => return "A";
+            when 9 => return "A";
+            when 8 => return "B";
+            when 7 => return "C";
+            when 6 => return "D";
+            when others => return "F";
+        end case;
+        
+   end letterGrade;
+
+   
+begin                                          
+   Put("Enter your score: ");           -- Prompt for input
+   Get(score);                   -- Input
+   Put( letterGrade(score) );                       -- Convert and output
+   New_Line;
+end letter_grade;]0;jav86@gold18: ~/CS214/projects/03[01;32mjav86@gold18[00m:[01;34m~/CS214/projects/03[00m$ cat letter_grade.adbgnatmake letter_gradeexit[K./letter_grade
+Enter your score: 100
+A
+]0;jav86@gold18: ~/CS214/projects/03[01;32mjav86@gold18[00m:[01;34m~/CS214/projects/03[00m$ ./letter_grade
+Enter your score: 90
+A
+]0;jav86@gold18: ~/CS214/projects/03[01;32mjav86@gold18[00m:[01;34m~/CS214/projects/03[00m$ ./letter_grade80  
+Enter your score: 80
+B
+]0;jav86@gold18: ~/CS214/projects/03[01;32mjav86@gold18[00m:[01;34m~/CS214/projects/03[00m$ ./letter_grade
+Enter your score: 70
+C
+]0;jav86@gold18: ~/CS214/projects/03[01;32mjav86@gold18[00m:[01;34m~/CS214/projects/03[00m$ ./letter_grade
+Enter your score: 60
+D
+]0;jav86@gold18: ~/CS214/projects/03[01;32mjav86@gold18[00m:[01;34m~/CS214/projects/03[00m$ ./letter_grade
+Enter your score: 50
+F
+]0;jav86@gold18: ~/CS214/projects/03[01;32mjav86@gold18[00m:[01;34m~/CS214/projects/03[00m$ exit
+exit
+
+Script done on 2022-01-28 13:42:30-05:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2022-01-28 14:15:43-05:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="80" LINES="24"]
+]0;jav86@gold18: ~/CS214/projects/03[01;32mjav86@gold18[00m:[01;34m~/CS214/projects/03[00m$ exit./letter_gradecat letter_grade.adb[6P./letter_gradeexit[K[Kexit./letter_gradecat letter_grade.adbgnatmake letter_gradeexit[K./letter_gradecat letter_grade.adb[6P./letter_gradeexit[Kgnatmake letter_grade[1Pcat letter_grade.adb[6P./letter_gradeexit[K[Kruby letter_grade.clj
+[1mTraceback[m (most recent call last):
+ruby: [1mNo such file or directory -- letter_grade.clj ([1;4mLoadError[m[1m)[m
+]0;jav86@gold18: ~/CS214/projects/03[01;32mjav86@gold18[00m:[01;34m~/CS214/projects/03[00m$ ruby letter_grade.clj   rb
+Enter the score: 70  100   100
+Grade is: A
+]0;jav86@gold18: ~/CS214/projects/03[01;32mjav86@gold18[00m:[01;34m~/CS214/projects/03[00m$ cat letter_grade.rb
+#! /usr/bin/ruby
+# letter_grade.rb translates a score into a grade
+# Completed by Justin Voss, 1/28/22
+################################################################
+
+# Input:  A score
+# Precondition: The score is an integer
+# Output: The corresponding letter grade
+
+#  Replace this line with the definition of function yearCode() 
+def letterGrade(score)
+   case (score/10)
+   when 10
+        "A"
+   when 9
+        "A"
+   when 8
+        "B"
+   when 7
+        "C"
+   when 6
+        "D"
+   else 
+        "F"
+ end 
+end 
+
+ 
+ if __FILE__ == $0
+    print "Enter the score: "
+    score = gets.chomp.to_i  #turns the input into an integer
+    print "Grade is: "
+    puts letterGrade(score)
+ end]0;jav86@gold18: ~/CS214/projects/03[01;32mjav86@gold18[00m:[01;34m~/CS214/projects/03[00m$ cat letter_grade.rb                   ruby ci  letter_grade.rb
+Enter the score: 100
+Grade is: A
+]0;jav86@gold18: ~/CS214/projects/03[01;32mjav86@gold18[00m:[01;34m~/CS214/projects/03[00m$ ruby letter_grade.rb
+Enter the score: 90
+Grade is: A
+]0;jav86@gold18: ~/CS214/projects/03[01;32mjav86@gold18[00m:[01;34m~/CS214/projects/03[00m$ ruby letter_grade.rb
+Enter the score: 80
+Grade is: B
+]0;jav86@gold18: ~/CS214/projects/03[01;32mjav86@gold18[00m:[01;34m~/CS214/projects/03[00m$ ruby letter_grade.rb
+Enter the score: 70
+Grade is: C
+]0;jav86@gold18: ~/CS214/projects/03[01;32mjav86@gold18[00m:[01;34m~/CS214/projects/03[00m$ ruby letter_grade.rb60  
+Enter the score: 60
+Grade is: D
+]0;jav86@gold18: ~/CS214/projects/03[01;32mjav86@gold18[00m:[01;34m~/CS214/projects/03[00m$ ruby letter_grade.rb
+Enter the score: 50
+Grade is: F
+]0;jav86@gold18: ~/CS214/projects/03[01;32mjav86@gold18[00m:[01;34m~/CS214/projects/03[00m$ exit
+exit
+
+Script done on 2022-01-28 14:19:07-05:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2022-01-28 14:19:20-05:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="80" LINES="24"]
+]0;jav86@gold18: ~/CS214/projects/03[01;32mjav86@gold18[00m:[01;34m~/CS214/projects/03[00m$ cd clojure
+]0;jav86@gold18: ~/CS214/projects/03/clojure[01;32mjav86@gold18[00m:[01;34m~/CS214/projects/03/clojure[00m$ clojure -m letter_grade
+
+Enter score: 100
+A 
+
+]0;jav86@gold18: ~/CS214/projects/03/clojure[01;32mjav86@gold18[00m:[01;34m~/CS214/projects/03/clojure[00m$ cat letter_grade.clj
+cat: letter_grade.clj: No such file or directory
+]0;jav86@gold18: ~/CS214/projects/03/clojure[01;32mjav86@gold18[00m:[01;34m~/CS214/projects/03/clojure[00m$ clojure       cd clojure       src
+]0;jav86@gold18: ~/CS214/projects/03/clojure/src[01;32mjav86@gold18[00m:[01;34m~/CS214/projects/03/clojure/src[00m$ cat letter_grde.cl      rade.clj
+;;;; letter_grade.clj is a driver for function letterGrade.
+;;;;
+;;;; Input: A score, an integer
+;;;; Output: The grade, either A, B, C, D, or F.
+;;;;
+;;;; Usage: clojure -m year_codes
+;;;;
+
+;;;; Completed by: Justin Voss
+;;;; Date: 1/28/22
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(ns letter_grade)                    ; name the program
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; letterGrade() returns the grade.
+;;; Receive: score, an integer
+;;; Precondition: it is an integer
+;;; Return: the corresponding letter grade
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+
+
+
+;; solution using the cond function
+(defn letterGrade [score]
+(let [score ( / score 10)]
+  (cond
+    (= score 10) "A"
+    (= score 9)  "A"
+    (= score 8)  "B"
+    (= score 7)  "C"
+    (= score 6)  "D"
+    :else                "F"
+  ))
+)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Function -main() test-drives our letterGrade() function.
+;;; Input: score, an integer
+;;; Output: the corresponding letter grade
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defn -main []
+ (print "\nEnter score: ") (flush)
+ (let
+    [ score (int(read)) ]                ; read score (an integer)
+    (println (letterGrade score) "\n")      ; display its grade
+ )
+)]0;jav86@gold18: ~/CS214/projects/03/clojure/src[01;32mjav86@gold18[00m:[01;34m~/CS214/projects/03/clojure/src[00m$ cd ..
+]0;jav86@gold18: ~/CS214/projects/03/clojure[01;32mjav86@gold18[00m:[01;34m~/CS214/projects/03/clojure[00m$ cd ..at letter_grade.cljd src[Kat letter_grade.cljlojure -m letter_grade
+
+Enter score: 100
+A 
+
+]0;jav86@gold18: ~/CS214/projects/03/clojure[01;32mjav86@gold18[00m:[01;34m~/CS214/projects/03/clojure[00m$ clojure -m letter_grade
+
+Enter score: 90
+A 
+
+]0;jav86@gold18: ~/CS214/projects/03/clojure[01;32mjav86@gold18[00m:[01;34m~/CS214/projects/03/clojure[00m$ clojure -m letter_grade
+
+Enter score: 80
+B 
+
+]0;jav86@gold18: ~/CS214/projects/03/clojure[01;32mjav86@gold18[00m:[01;34m~/CS214/projects/03/clojure[00m$ clojure -m letter_grade
+
+Enter score: 70
+C 
+
+]0;jav86@gold18: ~/CS214/projects/03/clojure[01;32mjav86@gold18[00m:[01;34m~/CS214/projects/03/clojure[00m$ clojure -m letter_grade
+
+Enter score: 60
+D 
+
+]0;jav86@gold18: ~/CS214/projects/03/clojure[01;32mjav86@gold18[00m:[01;34m~/CS214/projects/03/clojure[00m$ clojure -m letter_grade
+
+Enter score: 50
+F 
+
+]0;jav86@gold18: ~/CS214/projects/03/clojure[01;32mjav86@gold18[00m:[01;34m~/CS214/projects/03/clojure[00m$ clojure -m letter_grade
+
+Enter score: 40
+F 
+
+]0;jav86@gold18: ~/CS214/projects/03/clojure[01;32mjav86@gold18[00m:[01;34m~/CS214/projects/03/clojure[00m$ exit
+exit
+
+Script done on 2022-01-28 14:21:25-05:00 [COMMAND_EXIT_CODE="0"]

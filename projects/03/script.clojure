@@ -1,0 +1,99 @@
+Script started on 2022-01-28 14:19:20-05:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="80" LINES="24"]
+]0;jav86@gold18: ~/CS214/projects/03[01;32mjav86@gold18[00m:[01;34m~/CS214/projects/03[00m$ cd clojure
+]0;jav86@gold18: ~/CS214/projects/03/clojure[01;32mjav86@gold18[00m:[01;34m~/CS214/projects/03/clojure[00m$ clojure -m letter_grade
+
+Enter score: 100
+A 
+
+]0;jav86@gold18: ~/CS214/projects/03/clojure[01;32mjav86@gold18[00m:[01;34m~/CS214/projects/03/clojure[00m$ cat letter_grade.clj
+cat: letter_grade.clj: No such file or directory
+]0;jav86@gold18: ~/CS214/projects/03/clojure[01;32mjav86@gold18[00m:[01;34m~/CS214/projects/03/clojure[00m$ clojure       cd clojure       src
+]0;jav86@gold18: ~/CS214/projects/03/clojure/src[01;32mjav86@gold18[00m:[01;34m~/CS214/projects/03/clojure/src[00m$ cat letter_grde.cl      rade.clj
+;;;; letter_grade.clj is a driver for function letterGrade.
+;;;;
+;;;; Input: A score, an integer
+;;;; Output: The grade, either A, B, C, D, or F.
+;;;;
+;;;; Usage: clojure -m year_codes
+;;;;
+
+;;;; Completed by: Justin Voss
+;;;; Date: 1/28/22
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(ns letter_grade)                    ; name the program
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; letterGrade() returns the grade.
+;;; Receive: score, an integer
+;;; Precondition: it is an integer
+;;; Return: the corresponding letter grade
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+
+
+
+;; solution using the cond function
+(defn letterGrade [score]
+(let [score ( / score 10)]
+  (cond
+    (= score 10) "A"
+    (= score 9)  "A"
+    (= score 8)  "B"
+    (= score 7)  "C"
+    (= score 6)  "D"
+    :else                "F"
+  ))
+)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Function -main() test-drives our letterGrade() function.
+;;; Input: score, an integer
+;;; Output: the corresponding letter grade
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defn -main []
+ (print "\nEnter score: ") (flush)
+ (let
+    [ score (int(read)) ]                ; read score (an integer)
+    (println (letterGrade score) "\n")      ; display its grade
+ )
+)]0;jav86@gold18: ~/CS214/projects/03/clojure/src[01;32mjav86@gold18[00m:[01;34m~/CS214/projects/03/clojure/src[00m$ cd ..
+]0;jav86@gold18: ~/CS214/projects/03/clojure[01;32mjav86@gold18[00m:[01;34m~/CS214/projects/03/clojure[00m$ cd ..at letter_grade.cljd src[Kat letter_grade.cljlojure -m letter_grade
+
+Enter score: 100
+A 
+
+]0;jav86@gold18: ~/CS214/projects/03/clojure[01;32mjav86@gold18[00m:[01;34m~/CS214/projects/03/clojure[00m$ clojure -m letter_grade
+
+Enter score: 90
+A 
+
+]0;jav86@gold18: ~/CS214/projects/03/clojure[01;32mjav86@gold18[00m:[01;34m~/CS214/projects/03/clojure[00m$ clojure -m letter_grade
+
+Enter score: 80
+B 
+
+]0;jav86@gold18: ~/CS214/projects/03/clojure[01;32mjav86@gold18[00m:[01;34m~/CS214/projects/03/clojure[00m$ clojure -m letter_grade
+
+Enter score: 70
+C 
+
+]0;jav86@gold18: ~/CS214/projects/03/clojure[01;32mjav86@gold18[00m:[01;34m~/CS214/projects/03/clojure[00m$ clojure -m letter_grade
+
+Enter score: 60
+D 
+
+]0;jav86@gold18: ~/CS214/projects/03/clojure[01;32mjav86@gold18[00m:[01;34m~/CS214/projects/03/clojure[00m$ clojure -m letter_grade
+
+Enter score: 50
+F 
+
+]0;jav86@gold18: ~/CS214/projects/03/clojure[01;32mjav86@gold18[00m:[01;34m~/CS214/projects/03/clojure[00m$ clojure -m letter_grade
+
+Enter score: 40
+F 
+
+]0;jav86@gold18: ~/CS214/projects/03/clojure[01;32mjav86@gold18[00m:[01;34m~/CS214/projects/03/clojure[00m$ exit
+exit
+
+Script done on 2022-01-28 14:21:25-05:00 [COMMAND_EXIT_CODE="0"]

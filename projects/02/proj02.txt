@@ -1,0 +1,187 @@
+ Justin Voss
+
+This week's project is to practice creating BNF definitions and work with derivations.
+
+The are three key ideas to keep in mind:
+
+    - If a portion of a language construct is complicated, hide the complexity by creating a nonterminal for it, and then define the nonterminal (later).
+      
+    - If a language construct is optional, create a nonterminal that has two productions, one of which defines the optional part, and the other of which is an Ø-production.
+      
+    - If a language construct can be repeated, create a non-terminal that has two productions, one of which is a recursive production providing the repetition, and the other of which is an Ø-production by which the recursion can terminate.
+      
+1. Using these ideas, define the constructs below with BNF productions. Underline the terminals in your productions, to distinguish them from the nonterminals. You may assume that the following have already been defined:
+
+
+   <LETTER>   ::=   A | B | C | D | E | F | G | H | I | J | K | L 
+                    | M | N | O | P | Q | R | S | T | U | V | W 
+                    | X | Y | Z | a | b | c | d | e | f | g | h
+                    | i | j | k | l | m | n | o | p | q | r | s
+                    | t | u | v | w | x | y | z
+   <DIGIT>   ::=   0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+
+
+
+
+
+(I will use E as epsilon) 
+
+( Because my text editor does not save underlines, I will use ALL CAPS to indicate terminals. )
+
+
+a. A Java character literal
+
+<PUNCTUATION> ::= !|"|#|$|%|&|'|(|)|*|+|,|\|\|:|;|<|=|>|?| 
+@|[|\|]|^\|_|'|{|}|~
+
+
+
+<character> ::= <LETTER> | <DIGIT> | <PUNCTUATION>
+
+
+<alphanumeric_char> :: <LETTER> <alphanumeric_char> | <DIGIT> <alphanumeric_char>
+
+
+
+
+
+b. A Java character string literal
+
+
+<character> ::= <LETTER> | <DIGIT> | <PUNCTUATION>
+<string> ::= <character> <string> | E
+
+
+
+
+
+
+
+
+
+
+c. A Java integer literal
+
+
+<first_digit> :: <DIGIT> | - 
+<integer> ::= <first_digit>  <digit_sequence> | E
+<digit_sequence> ::= <DIGIT> <digit_sequence> | E
+
+
+
+
+d. A Java real (floating point) literal
+
+
+<first_digit> :: <DIGIT> | - 
+<digit_sequence> ::= <DIGIT> <digit_sequence> | E
+<float> ::= <first_digit> <digit_sequence> . <DIGIT> <digit_sequence> | E
+
+
+
+
+
+
+
+e. A Java identifier:
+
+<first_character> ::= <LETTER> | _ | $
+<alphanumeric_char> :: <LETTER> <alphanumeric_char> | <DIGIT> <alphanumeric_char>
+<identifier> :: <first_character> <alphanumeric_char>
+
+
+
+
+f. A Java function declaration (prototype):
+
+<MODIFIER> ::= private | default | protected | public | abstract | final | interface | native | strict | synchronized | transient | volatile
+
+<TYPE> ::= byte | short | int | long | float | double | boolean | char | string | void
+<identifier> :: <first_character> <alphanumeric_char>
+<single_parameter> :: <TYPE> <identifier>
+<parameters> ::= <single_parameter> | <single_parameter>, <parameters> | E
+<prototype> ::= <MODIFIER> <TYPE> <identifier>(<parameters>) {}
+
+
+
+
+
+g. A Java if statement (you may assume that the nonterminals <statement> and <expression> are defined elsewhere):
+
+
+<if_statement> ::= if (<expression>) {<statement>} < else_part>
+<else_part> ::= else{<statement>} | E 
+
+
+
+
+h. A Java while statement (you may assume that the nonterminals <statement> and <expression> are defined elsewhere):
+
+<while_statement> ::= while (<expression>) {<statement>} 
+
+
+
+
+
+
+
+2. Prove that the following grammar is ambiguous:
+<S> ::= <A>
+<A> ::= <A> + <A> | <id>
+<id> ::= a | b | c
+
+A grammar is ambiguous if it can  generate more than one parse tree from a single expression. 
+
+I will produce an expression that we will try to make two different ways.
+
+We will produce the result a + b + c
+We will start with 
+S ::= A
+  ::= A + A 
+  ::= A + A + A
+  ::= id + A + A
+  ::=  a + A + A
+  ::=  a + id + A
+  ::=  a + b + A
+  ::=  a + b + id
+  ::=  a + b + c
+
+And now we will take a different path and get the same result:
+S ::=  A
+  ::=  A + A
+  ::=  A + A + A
+  ::=  A + A + id
+  ::=  A + A + c
+  ::=  A + id + c
+  ::=  A + b + c
+  ::=  id + b + c
+  ::=  a + b + c
+Because we generated more than one way to get the same result (2 parse trees), the grammar is ambiguous. 
+
+
+
+3. Give a left-most derivation for A = A * (B + C) using the following BNF grammar:
+<assign> ::= <id> = <expr>
+<id> ::= A | B | C
+<expr> ::= <expr> + <term> | <term>
+<term> ::= <term> * <factor> | <factor>
+<factor> ::= ( <expr> ) | <id>
+
+
+<assign>
+<id> = <expr>
+A = <expr>
+A = <term>
+A = <term> * <factor>
+A = <factor> * <factor>
+A = <id> * <factor>
+A = A * <factor>
+A = A * ( <expr> )
+A = A * (<expr> + <term>)
+A = A * (<term> + <term>)
+A = A * (<factor> + <term>)
+A = A * (<id> + <term>)
+A = A * (B + <term>)
+A = A * (B + <factor>)
+A = A * (B + <id>)
+A = A * (B + C)
