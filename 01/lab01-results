@@ -1,0 +1,363 @@
+Script started on 2022-01-13 12:50:38-05:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="226" LINES="54"]
+]0;jav86@gold21: ~/CS214/labs/01[01;32mjav86@gold21[00m:[01;34m~/CS214/labs/01[00m$ cat CircleArea.java
+/*Input: The radius of the circle.
+ * Precondition: The radius is a positive number.
+ *  * Output: The area of the circle.
+ *   *
+ *    * Begun by: Dr. Adams, for CS 214, at Calvin College.
+ *     * Completed by: Justin Voss
+ *      * Date: 1/13/22
+ *       **********************************************************/
+
+
+ import java.util.Scanner;  // include class for Scanner
+
+ public class CircleArea {
+
+	      /* function circleArea() computes a circle's area, given its radius.
+	       *       * Parameter: r, a double
+	       *             * Precondition: r is not negative.
+	       *                   * Returns: the area of the circle
+	       *                         */
+	      public static double circleArea(double r) {
+		              return Math.PI * r * r;               // return an expression
+			           } // circleArea method
+	      	
+	     //    main program
+		   public static void main(String[] args) {
+		         // prompt for radius
+		               System.out.println("\n\nTo compute the area of a circle,");
+		                     System.out.print(" enter its radius: ");
+		
+		                           // Create a connection named keyboard to standard in
+		                                 Scanner keyboard = new Scanner(System.in);
+		
+		                                       //Get the number from the user
+		                                             double radius = keyboard.nextDouble();
+		
+		                                                   // output area
+		                                                         System.out.println("\nThe area is " + circleArea(radius) + "\n");
+		                                                               System.out.printf("The area is %f\n\n", circleArea(radius));
+		                                                                     System.out.printf("The area is %.15f\n\n", circleArea(radius));
+		                                                                       } // main method
+		
+		                                                                       } // class CircleArea
+		
+]0;jav86@gold21: ~/CS214/labs/01[01;32mjav86@gold21[00m:[01;34m~/CS214/labs/01[00m$ java -dec precation CircleArea.java
+Unrecognized option: -deprecation
+Error: Could not create the Java Virtual Machine.
+Error: A fatal exception has occurred. Program will exit.
+]0;jav86@gold21: ~/CS214/labs/01[01;32mjav86@gold21[00m:[01;34m~/CS214/labs/01[00m$ java 9 0 -deprecation CircleArea.java[1@c
+]0;jav86@gold21: ~/CS214/labs/01[01;32mjav86@gold21[00m:[01;34m~/CS214/labs/01[00m$ Circle      java CircleArea
+
+
+To compute the area of a circle,
+ enter its radius: 1
+
+The area is 3.141592653589793
+
+The area is 3.141593
+
+The area is 3.141592653589793
+
+]0;jav86@gold21: ~/CS214/labs/01[01;32mjav86@gold21[00m:[01;34m~/CS214/labs/01[00m$ java CircleArea
+
+
+To compute the area of a circle,
+ enter its radius: 2
+
+The area is 12.566370614359172
+
+The area is 12.566371
+
+The area is 12.566370614359172
+
+]0;jav86@gold21: ~/CS214/labs/01[01;32mjav86@gold21[00m:[01;34m~/CS214/labs/01[00m$ java CircleArea
+
+
+To compute the area of a circle,
+ enter its radius: 2.5
+
+The area is 19.634954084936208
+
+The area is 19.634954
+
+The area is 19.634954084936208
+
+]0;jav86@gold21: ~/CS214/labs/01[01;32mjav86@gold21[00m:[01;34m~/CS214/labs/01[00m$ java CircleArea
+
+
+To compute the area of a circle,
+ enter its radius: 4.99999
+
+The area is 78.53950218079365
+
+The area is 78.539502
+
+The area is 78.539502180793650
+
+]0;jav86@gold21: ~/CS214/labs/01[01;32mjav86@gold21[00m:[01;34m~/CS214/labs/01[00m$ exit
+exit
+
+Script done on 2022-01-13 12:52:33-05:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2022-01-13 13:14:00-05:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="80" LINES="24"]
+]0;jav86@gold21: ~/CS214/labs/01[01;32mjav86@gold21[00m:[01;34m~/CS214/labs/01[00m$ c cat circle_area.adb
+-- circle_area.adb computes the area of a circle.
+--
+-- Input: The radius of the circle.
+-- Precondition: The radius is a positive number.
+-- Output: The area of the circle.
+--
+-- Begun by: Prof. Adams, CS 214 at Calvin College.
+-- Completed by: Justin Voss
+-- Date: 1/13/22
+----------------------------------------------------
+
+with Ada.Text_IO, Ada.Float_Text_IO;
+use  Ada.Text_IO, Ada.Float_Text_IO;
+
+procedure circle_area is
+
+   radius, area : float; 
+
+   -- function circleArea computes a circle's area, given its radius
+   -- Parameter: r, a float
+   -- Precondition: r >= 0.0
+   -- Return: the area of the circle whose radius is r
+   ----------------------------------------------------
+   function circleArea(r: in float) return float is -- has the parameter for a number r for the function circleArea
+      PI : constant := 3.1415927; -- has the value of pi
+   begin -- starts the code segment
+      return PI * r ** 2; -- returns the value of the area, which is pi times radius squared
+   end circleArea; -- ends the code segment
+
+begin  -- begins the block of code                         
+   New_Line; -- puts a blank line
+   Put_Line("To compute the area of a circle,"); -- prints a line of text
+   Put("enter its radius: "); -- prints a line of text
+   Get(radius); -- asks the user for an input
+
+   area := circleArea(radius); -- assigns the variable "area" as the function call of circleArea, using the user input
+
+   New_Line; -- blank line
+   Put("The circle's area is "); -- displays a line of text
+   Put(area); -- displays the calculated area
+   New_Line; New_Line; -- puts two blank lines
+
+   Put("The circle's area is "); -- displays a line of text
+   Put(area, 1, 15, 0); -- prints the area, with more parameters, making the decimal place go to 15 digits
+   New_Line; New_Line; -- puts two blank lines
+end circle_area; -- ends the block of code
+
+-- Put line puts every thing in that text segment on one line, and then makes a new line after.
+-- Put just displays the text, but then the next thing goes right next to that, instead of a new line.
+-- You can adjust the precision by changing the paramaters after the variable. In this case, it was 15 digits after the decimal point.
+]0;jav86@gold21: ~/CS214/labs/01[01;32mjav86@gold21[00m:[01;34m~/CS214/labs/01[00m$ gnatmake circle_area
+x86_64-linux-gnu-gcc-7 -c circle_area.adb
+x86_64-linux-gnu-gnatbind-7 -x circle_area.ali
+x86_64-linux-gnu-gnatlink-7 circle_area.ali
+]0;jav86@gold21: ~/CS214/labs/01[01;32mjav86@gold21[00m:[01;34m~/CS214/labs/01[00m$ circle      ./circle_area
+
+To compute the area of a circle,
+enter its radius: 1
+
+The circle's area is  3.14159E+00
+
+The circle's area is 3.141592741012573
+
+]0;jav86@gold21: ~/CS214/labs/01[01;32mjav86@gold21[00m:[01;34m~/CS214/labs/01[00m$ ./circle_area
+
+To compute the area of a circle,
+enter its radius: 2
+
+The circle's area is  1.25664E+01
+
+The circle's area is 12.566370964050293
+
+]0;jav86@gold21: ~/CS214/labs/01[01;32mjav86@gold21[00m:[01;34m~/CS214/labs/01[00m$ ./circle_area
+
+To compute the area of a circle,
+enter its radius: 2.5
+
+The circle's area is  1.96350E+01
+
+The circle's area is 19.634954452514648
+
+]0;jav86@gold21: ~/CS214/labs/01[01;32mjav86@gold21[00m:[01;34m~/CS214/labs/01[00m$ 4.99999       ./circle_area
+
+To compute the area of a circle,
+enter its radius: 4.99999
+
+The circle's area is  7.85395E+01
+
+The circle's area is 78.539505004882813
+
+]0;jav86@gold21: ~/CS214/labs/01[01;32mjav86@gold21[00m:[01;34m~/CS214/labs/01[00m$ exit
+exit
+
+Script done on 2022-01-13 13:15:32-05:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2022-01-13 13:58:27-05:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="80" LINES="24"]
+]0;jav86@gold21: ~/CS214/labs/01/clojure/src[01;32mjav86@gold21[00m:[01;34m~/CS214/labs/01/clojure/src[00m$ cat s src/circle_area.clj
+cat: src/circle_area.clj: No such file or directory
+]0;jav86@gold21: ~/CS214/labs/01/clojure/src[01;32mjav86@gold21[00m:[01;34m~/CS214/labs/01/clojure/src[00m$ cd ..
+]0;jav86@gold21: ~/CS214/labs/01/clojure[01;32mjav86@gold21[00m:[01;34m~/CS214/labs/01/clojure[00m$ src/circle_area.clj[1@c[1@a[1@t[1@ src/circle_area.clj
+;;;; circle_area.clj calculates the area of a circle.
+;;;;
+;;;; Input: The radius of a circle.
+;;;; Output: The area of that circle.
+;;;;
+;;;; Usage: clojure -m circle_area
+;;;;
+;;;; Begun by: Prof. Adams, for CS 214 at Calvin College.
+;;;; Completed by: Justin Voss
+;;;; Date: 1/13/22
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(ns circle_area) ; namespace function names the program
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Function circleArea() computes the area of a circle.
+;;; Receive: itsRadius, a number.
+;;; Precondition: itsRadius >= 0.0.
+;;; Return: the area of the corresponding circle.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defn circleArea [itsRadius]
+  (* Math/PI (* itsRadius itsRadius) )  ; return PI*r^2
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Function -main is where execution begins
+;;; Input: the radius of a circle.
+;;; Output: the area of that circle.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defn -main []
+  (println "\nTo compute the area of a circle,")
+  (print   " enter its radius: ") (flush)
+  (let
+    [ radius (read) ]
+
+    (assert (>= radius 0) "-main: radius must be positive")
+    (printf "\nThe area is %f\n\n" (circleArea radius))
+
+    (print "\nThe area is ")
+    (print (circleArea radius))
+    (print "\n\n")
+
+    (printf "\nThe area is %.15f\n\n" (circleArea radius))
+  )
+)  ]0;jav86@gold21: ~/CS214/labs/01/clojure[01;32mjav86@gold21[00m:[01;34m~/CS214/labs/01/clojure[00m$ cd src
+]0;jav86@gold21: ~/CS214/labs/01/clojure/src[01;32mjav86@gold21[00m:[01;34m~/CS214/labs/01/clojure/src[00m$ cd srcat src/circle_area.cljd ..[Kat src/circle_area.cljlj[Kexit./circle_areaexit[K[1Pclj[20@at src/circle_area.cljd ..[Kat src/circle_area.cljd src[K[Kcd srcat src/circle_area.cljd ..[Kat src/circle_area.cljlj[Kexit./circle_area[7@gnatmake circle_area[1Pcat circle_area.adbvim circle_area.adbls[Kvim circle_area.adb[1Pscript script.java[3Pjava CircleArea.java[14@c -deprecation CircleArea.java[14P CircleArea.java[K[3@script script.javavim circle_area.adbls[Kvim circle_area.adbcat circle_area.adbgnatmake circle_area[7P./circle_areaexit[K[1Pclj[20@at src/circle_area.cljd ..[Kat src/circle_area.cljd src[K[Kcd srcat src/circle_area.clj^C
+]0;jav86@gold21: ~/CS214/labs/01/clojure/src[01;32mjav86@gold21[00m:[01;34m~/CS214/labs/01/clojure/src[00m$ clojure . -cp . -m circle_area
+
+To compute the area of a circle,
+ enter its radius: 1
+
+The area is 3.141593
+
+
+The area is 3.141592653589793
+
+
+The area is 3.141592653589793
+
+]0;jav86@gold21: ~/CS214/labs/01/clojure/src[01;32mjav86@gold21[00m:[01;34m~/CS214/labs/01/clojure/src[00m$ clojure -cp . -m circle_area
+
+To compute the area of a circle,
+ enter its radius: 2
+
+The area is 12.566371
+
+
+The area is 12.566370614359172
+
+
+The area is 12.566370614359172
+
+]0;jav86@gold21: ~/CS214/labs/01/clojure/src[01;32mjav86@gold21[00m:[01;34m~/CS214/labs/01/clojure/src[00m$ clojure -cp . -m circle_area
+\
+To compute the area of a circle,
+ enter its radius: 2.5
+Execution error at circle-area/-main (circle_area.clj:34).
+Unsupported character: \2.5
+
+Full report at:
+/tmp/clojure-13128984151169459420.edn
+]0;jav86@gold21: ~/CS214/labs/01/clojure/src[01;32mjav86@gold21[00m:[01;34m~/CS214/labs/01/clojure/src[00m$ clojure -cp . -m circle_area
+
+To compute the area of a circle,
+ enter its radius: 2.5
+
+The area is 19.634954
+
+
+The area is 19.634954084936208
+
+
+The area is 19.634954084936208
+
+]0;jav86@gold21: ~/CS214/labs/01/clojure/src[01;32mjav86@gold21[00m:[01;34m~/CS214/labs/01/clojure/src[00m$ 4.  clojure -cp . -m circle_area
+
+To compute the area of a circle,
+ enter its radius: 4.99999
+
+The area is 78.539502
+
+
+The area is 78.53950218079363
+
+
+The area is 78.539502180793630
+
+]0;jav86@gold21: ~/CS214/labs/01/clojure/src[01;32mjav86@gold21[00m:[01;34m~/CS214/labs/01/clojure/src[00m$ exit
+exit
+
+Script done on 2022-01-13 14:01:47-05:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2022-01-13 14:04:53-05:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="80" LINES="24"]
+]0;jav86@gold21: ~/CS214/labs/01[01;32mjav86@gold21[00m:[01;34m~/CS214/labs/01[00m$ sc  cat circle_area.rb
+#! /usr/bin/ruby
+# circle_area.rb computes the area of a circle given its radius
+# 
+# Input: the radius of a circle
+# Precondition: the radius is not negative
+# Output: the area of the circle.
+#
+# Begun by: Prof. Adams, for CS 214 at Calvin College.
+# Completed by: Justin Voss
+# Date: 1/13/22
+###############################################################
+
+# function circleArea returns a circle's area, given its radius
+# Parameters: r, a number
+# Precondition: r > 0.
+# Returns: the area of a circle whose radius is r.
+PI = 3.1415927
+def circleArea(r)
+    PI * r ** 2 
+end
+
+if __FILE__ == $0
+   puts "To compute the area of a circle,"
+   print " enter its radius: "
+   radius = gets.chomp.to_f
+   print "The circle's area is: "
+   puts circleArea(radius)
+end]0;jav86@gold21: ~/CS214/labs/01[01;32mjav86@gold21[00m:[01;34m~/CS214/labs/01[00m$ cat circle_area.rbexit[Kclojure -cp . -m circle_areaexit[Kcat circle_area.rb[Kcat circle_area.rbexit[Kcat circle_area.rbexit[Kclojure -cp . -m circle_aread src[Kat src/circle_area.cljd src[Klojure -cp . -m circle_areaexit[Kcat circle_area.rb[Kruby circle_area.rb
+To compute the area of a circle,
+ enter its radius: 1
+The circle's area is: 3.1415927
+]0;jav86@gold21: ~/CS214/labs/01[01;32mjav86@gold21[00m:[01;34m~/CS214/labs/01[00m$ ruby circle_area.rb
+To compute the area of a circle,
+ enter its radius: 2
+The circle's area is: 12.5663708
+]0;jav86@gold21: ~/CS214/labs/01[01;32mjav86@gold21[00m:[01;34m~/CS214/labs/01[00m$ ruby circle_area.rb
+To compute the area of a circle,
+ enter its radius: 2.5
+The circle's area is: 19.634954375
+]0;jav86@gold21: ~/CS214/labs/01[01;32mjav86@gold21[00m:[01;34m~/CS214/labs/01[00m$ ruby circle_area.rb
+To compute the area of a circle,
+ enter its radius: 4.99999
+The circle's area is: 78.53950334104418
+]0;jav86@gold21: ~/CS214/labs/01[01;32mjav86@gold21[00m:[01;34m~/CS214/labs/01[00m$ exit
+exit
+
+Script done on 2022-01-13 14:06:08-05:00 [COMMAND_EXIT_CODE="0"]

@@ -1,0 +1,50 @@
+Script started on 2022-02-10 13:10:10-05:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="80" LINES="24"]
+]0;jav86@gold20: ~/CS214/labs/05[01;32mjav86@gold20[00m:[01;34m~/CS214/labs/05[00m$ clojure
+[KClojure 1.10.1
+[Kuser=> [Kuser=> [Kuser=> (reduce + ( [1 2 3[ ][1 2 3])user=> (reduce + [1 2 3])user=> [K(reduce + [1 2 3])
+6
+user=> [Kuser=> [Kuser=> (reduce + [1 2 3])[1@'user=> [K(reduce + '[1 2 3])
+6
+user=> [Kuser=> [Kuser=> (reduce + '[1 2 3])[1P)))[1P[1@(user=> [K(reduce + '(1 2 3))
+6
+user=> [Kuser=> [Kuser=> (reduce + '(1 2 3))[1 2 3])[1P[1P[1P[1@m[1@a[1@x[1@ user=> [K(reduce max [1 2 3])
+3
+user=> [Kuser=> [Kuser=> (reduce max [1 2 3])[1P[1Px[1P[1@c[1@o[1@n[1@j [1 2 3][)4) )5) )6)])[4 5 6]user=> [K(reduce conj [1 2 3][4 5 6])
+[1 2 3 4 5 6]
+user=> [Kuser=> [Kuser=> (reduce conj [1 2 3][4 5 6])user=> (reduce [8Pmax [1 2 3])ax[1P[1P[1P[1@+ [1@ '(1 2 3))([1 2 3])'[1P[1P[1P[1P[1@ [1@m[1P[1@+[1@ [1 2 [1@ [1P3[1@ [1@4[1@ [1@5])user=> [K(reduce + [1 2 3 4 5])
+15
+user=> [Kuser=> [Kuser=> (reduce + [1 2 3 4 5]) [1@1[1@ [1 2 3 4 5])user=> [K(reduce + 1 [1 2 3 4 5])
+16
+user=> [Kuser=> [Kuser=> (reduce + 1 [1 2 3 4 5])[1P)))user=> (reduce + 1 [1 2 3 4 5)[1P[1@([1@'(1[1P[1@2[1P  [1P2 3 4 5))user=> [K(reduce + 1 '(2 3 4 5))
+15
+user=> [Kuser=> [Kuser=> (reduce + 1 '(2 3 4 5))[1@[1 2 3 4 5])1[1P  [1P2 3 4 5])user=> [K(reduce + 1 [2 3 4 5])
+15
+user=> [Kuser=> [Kuser=> (reduce + 1 [2 3 4 5])[1@'(2 3 4 5))[1P[2 3 4 5])[1P[1P[1P[2@,m[1@a[1@x[1P[1P[1P[1P[1@m[1@a[1@x [1@ [1@5 [2 3 4 [1P5[1P[1P[1P[1P[1P[1P[1@4[1@ [1@3[1@ [1@2[1@ [1@1user=> [K(reduce max 5 [4 3 2 1])
+5
+user=> [Kuser=> [Kuser=> (reduce max 5 [4 3 2 1])[2P+ 1 [2 3 4 5])2 2 3 4 5[1P[1P[1@1[1@ [1P[1P[1P[1P [1@ [1@b[1@i[1@t[1@-[1@o[1@r [1 2 3 4])user=> [K(reduce bit-or [1 2 3 4])
+7
+user=> [Kuser=> [Kuser=> (reduce bit-or [1 2 3 4])[1P[1P[1P[1P[1P[1P[1P[1@"[1@a[1@"[1@ [1@"[1@b[1@"[1@ [1@"[1@c[1@"[1P[1P[1P[1P[1P[1P[1@s[1@t[1@r ["a" "b" "c"])user=> [K(reduce str ["a" "b" "c"])
+"abc"
+user=> [Kuser=> [Kuser=> (reduce str ["a" "b" "c"])user=> (reduce [1Pbit-or [1 2 3 4])[1P[1P[1P[1P [1@[ 3[1P3 4[1@ [1@5r[1P[1P[1P[1P[1P[1P[1P [1@ [1@+ [1@ [1@1 [1@ [1@2 [1@ [1P [3 4 5]))user=> [K(reduce + 1 2 [3 4 5])
+Execution error (ArityException) at user/eval25 (REPL:1).
+Wrong number of args (4) passed to: clojure.core/reduce
+user=> [Kuser=> [Kuser=> (reduce + 1 2 [3 4 5])5][1P)))user=> (reduce + 1 2 [3 4 5)[1P[1@( [1@'[1P[1P '(3 4 5)) user=> [K(reduce + 1 '(3 4 5)) 
+13
+user=> [Kuser=> [Kuser=> (reduce + 1 '(3 4 5))  4 [1P[1P[1P[1P5[1P[1@2[1@ [1@3[1@ [1@4) ) 5) user=> [K(reduce + 1 '(2 3 4) 5) 
+Execution error (ArityException) at user/eval29 (REPL:1).
+Wrong number of args (4) passed to: clojure.core/reduce
+user=> [Kuser=> [Kuser=> (defn csv [seq][seq] (recu  duce (fn [a b[ ][a b] (str a "," b)(str a "," b))(fn [a b] (str a "," b)) seq)user=> (defn csv [seq] (reduce (fn [a b] (str a "," b)) seq))user=> (defn csv [seq] (reduce (fn [a b] (str a "," b)) seq))user=> [K(defn csv [seq] (reduce (fn [a b] (str a "," b)) seq))
+[K#'user/csv
+user=> [Kuser=> [Kuser=> (csv [11 22 33][11 22 33]_ )user=> (csv [11 22 33])user=> [K(csv [11 22 33])
+"11,22,33"
+user=> [Kuser=> [Kuser=> (defn totalItems [seqOfSeqs][seqOfSeqs] (recuc   duce + (map count S seqOfSeqs)(map count seqOfSeqs))(reduce + (map count seqOfSeqs)))user=> (defn totalItems [seqOfSeqs] (reduce + (map count seqOfSeqs)))user=> [K(defn totalItems [seqOfSeqs] (reduce + (map count seqOfSeqs)))
+#'user/totalItems
+user=> [Kuser=> [Kuser=> (totalItems [["Ann{ "]["Ann"] ["Bob" "Chris"]["Bob" "Chris"] ["d Dan" "Eve" "Fred"]["Dan" "Eve" "Fred"]]user=> (totalItems [["Ann"] ["Bob" "Chris"] ["Dan" "Eve" "Fred"]])user=> (totalItems [["Ann"] ["Bob" "Chris"] ["Dan" "Eve" "Fred"]])user=> [K(totalItems [["Ann"] ["Bob" "Chris"] ["Dan" "Eve" "Fred"]])
+6
+user=> [Kuser=> [Kuser=> (sumSquares '(1 2 3)(1 2 3))user=> [K(sumSquares '(1 2 3))
+Syntax error compiling at (REPL:1:1).
+Unable to resolve symbol: sumSquares in this context
+user=> [Kuser=> [Kuser=> 
+[K]0;jav86@gold20: ~/CS214/labs/05[01;32mjav86@gold20[00m:[01;34m~/CS214/labs/05[00m$ exit
+
+Script done on 2022-02-10 13:24:06-05:00 [COMMAND_EXIT_CODE="0"]
