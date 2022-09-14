@@ -1,0 +1,28 @@
+Script started on 2022-02-10 13:42:13-05:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="80" LINES="24"]
+]0;jav86@gold20: ~/CS214/labs/05[01;32mjav86@gold20[00m:[01;34m~/CS214/labs/05[00m$ (fn [x y z] (x + x y z))
+bash: syntax error near unexpected token `('
+]0;jav86@gold20: ~/CS214/labs/05[01;32mjav86@gold20[00m:[01;34m~/CS214/labs/05[00m$ clojure
+[KClojure 1.10.1
+[Kuser=> [Kuser=> [Kuser=> (fn [x y z][x y z] (+ x y z)(+ x y z))user=> (fn [x y z] (+ x y z))user=> [K(fn [x y z] (+ x y z))
+[K#object[user$eval136$fn__137 0x5183d589 "user$eval136$fn__137@5183d589"]
+user=> [Kuser=> [Kuser=> (fn [x][x] (nil? x)(nil? x))user=> (fn [x] (nil? x))user=> [K(fn [x] (nil? x))
+#object[user$eval140$fn__141 0x4d4960c8 "user$eval140$fn__141@4d4960c8"]
+user=> [Kuser=> [Kuser=> (fn [][] 17.2)user=> (fn [] 17.2)user=> [K(fn [] 17.2)
+#object[user$eval144$fn__145 0x47c64cfe "user$eval144$fn__145@47c64cfe"]
+user=> [Kuser=> [Kuser=> (fn [] 17.2)[5@x] (nil? x))[5@ y z] (+ x y z))1) )3) )5)[1@ user=> [K(fn [x y z] (+ x y z) 1 3 5)
+#object[user$eval148$fn__149 0x7004e3d "user$eval148$fn__149@7004e3d"]
+user=> [Kuser=> [Kuser=> (fn [x y z] (+ x y z) 1 3 5))  [1@)user=> (fn [x y z] (+ x y z))[1P([1@((fn [x y z] (+ x y z)[1@)user=> ((fn [x y z] (+ x y z))user=> [K((fn [x y z] (+ x y z)) 1 3 5)
+9
+user=> [Kuser=> [Kuser=> ((fn [x y z] (+ x y z)) 1 3 5)user=> ([2Pfn [x y z] (+ x y z) 1 3 5)user=> (fn [] 17.2)[K[5@x] (nil? x)))[1@(fn [x] (nil? x)))user=> ((fn [x] (nil? x)) )8)user=> [K((fn [x] (nil? x)) 8)
+false
+user=> [Kuser=> [Kuser=> ((fn [x] (nil? x)) 8)[9@ y z] (+ x y z)) 1 3 5)user=> ([2Pfn [x y z] (+ x y z) 1 3 5)user=> (fn [] 17.2)[K([1@((fn [] 17.2))user=> ((fn [] 17.2)) )6)user=> [K((fn [] 17.2) 6)
+Execution error (ArityException) at user/eval160 (REPL:1).
+Wrong number of args (1) passed to: user/eval160/fn--161
+user=> [Kuser=> [Kuser=> ((fn [] 17.2) 6)6[1P)[1P)user=> [K((fn [] 17.2))
+17.2
+user=> [Kuser=> [Kuser=> ((fn [] 17.2))user=> [K((fn [] 17.2))
+17.2
+user=> [Kuser=> [Kuser=> 
+[K]0;jav86@gold20: ~/CS214/labs/05[01;32mjav86@gold20[00m:[01;34m~/CS214/labs/05[00m$ exit
+
+Script done on 2022-02-10 13:46:44-05:00 [COMMAND_EXIT_CODE="0"]
