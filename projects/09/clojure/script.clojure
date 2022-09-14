@@ -1,0 +1,395 @@
+Script started on 2022-03-19 20:44:03-04:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="105" LINES="30"]
+]0;jav86@gold29: ~/CS214/projects/09/clojure[01;32mjav86@gold29[00m:[01;34m~/CS214/projects/09/clojure[00m$ scr   cat temperatureTeset  ter.clj Temperature.clj
+cat: temperatureTester.clj: No such file or directory
+cat: Temperature.clj: No such file or directory
+]0;jav86@gold29: ~/CS214/projects/09/clojure[01;32mjav86@gold29[00m:[01;34m~/CS214/projects/09/clojure[00m$ cd src
+]0;jav86@gold29: ~/CS214/projects/09/clojure/src[01;32mjav86@gold29[00m:[01;34m~/CS214/projects/09/clojure/src[00m$ cd srcat temperatureTester.clj Temperature.clj
+;; temperatureTester.clj tests a Clojure Name type,
+;;  stored in Temperature.clj (in the src directory).
+;;
+;; Output: the results of testing the Temperature functions.
+;;
+;; Usage: clojure -m temperatureTester
+;;
+;; Completed by: Justin Voss
+;; Date: 03/17/22
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(ns temperatureTester)
+
+;;(load "Temperature")
+(load-file "src/Temperature.clj")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; A simple driver to test our Temperature functions. 
+;; Output: the results of testing our Temperature functions.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defn -main []
+    (let
+        [
+            temp1 (make-Temperature 32.0 "F")
+            temp2 (make-Temperature 0.0 "C")
+            temp3 (make-Temperature 273.15 "K")
+            temp4 (make-Temperature 100.0 "F")
+        ]
+    
+    ;; testing toFahrenheit
+    (println "Testing converter methods...")
+    (assert (= (toFahrenheit temp1) temp1) "toFahrenheit(1) failed")
+    (assert (= (toFahrenheit temp2) temp1) "toFahrenheit(1) failed")
+    (assert (= (toFahrenheit temp3) temp1) "toFahrenheit(1) failed")
+
+    (assert (= (toCelsius temp1) temp2) "toCelsius(1) failed")
+    (assert (= (toCelsius temp2) temp2) "toCelsius(1) failed")
+    (assert (= (toCelsius temp3) temp2) "toCelsius(1) failed")
+
+    (assert (= (toKelvin temp1) temp3) "toKelvin(1) failed")
+    (assert (= (toKelvin temp2) temp3) "toKelvin(1) failed")
+    (assert (= (toKelvin temp3) temp3) "toKelvin(1) failed")
+
+    (assert (equals temp1 temp2) "equals(1) failed")
+    (assert (lessThan temp1 temp4) "equals(1) failed")
+
+    (println "\nAll tests passed!\n")
+    (println "\n Enter degrees and scale for baseTemp, ")
+    (println "\n enter degrees and scale for limitTemp, ")
+    (println "\n then finally enter a step value:\n")
+    (let [baseTemp (readTemperature)  ;; initializes base limit and step values
+        limitTemp (readTemperature)
+        stepValue (read-string (read-line))]
+        
+        (if (or (checkValid (getDegrees baseTemp) (getScale baseTemp)) (checkValid (getDegrees limitTemp) (getScale limitTemp)))  ;; checks if it is a valid temperature
+            (do
+                (if ( < (getDegrees baseTemp) (getDegrees limitTemp))  
+                    (printTable baseTemp limitTemp stepValue)
+                (println "Error: base temp has to be greater than limit temp.")  ;; if the base is bigger than the limit, it produces an error
+                )
+            )
+        (println "Error. Invalid argument")
+        )
+        )
+    )
+);; Temperature.clj is a module for our 'Temperature' type-abstraction.
+;;
+;; Completed by: Justin Voss
+;; Date: 03/17/22
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Create a record/struct type named Temperature
+(defrecord Temperature [myDegrees myScale])
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; checkValid checks if an argument is valid
+;; Receive: degrees and scale, a double and char
+;; Return: true or false, based on if it is valid or not
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defn checkValid [degrees scale]
+    (if (or (and (= scale  "F") (>= degrees -459.67)) (and (= scale  "C") (>= degrees -273.15)) (and (= scale  "K") (>= degrees 0.0)))
+      true
+      false
+    )
+)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; make-Temperature constructs a Temperature object.
+;; Receive: degrees and scale, a double and char
+;; Return: the Temperature (degrees scale). 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defn make-Temperature [degrees scale]
+    (if (checkValid degrees scale)
+    (->Temperature degrees (clojure.string/upper-case scale)) ;; converts the letter to an uppercase
+    (print "Invalid argument.")
+  ))
+  
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; getDegrees extracts the degrees of a Temperature object.
+  ;; Receive: aTemp, a Temperature
+  ;; Return: degrees of the Temperature object
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  (defn getDegrees [aTemp]
+    (:myDegrees aTemp)
+  )
+  
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; getDegrees extracts the scale of a Temperature object.
+  ;; Receive: aTemp, a Temperature
+  ;; Return: degrees of the Temperature object
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  (defn getScale [aTemp]
+    (:myScale aTemp)
+  )
+  
+ 
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; toFahrenheit converts a Temperature to a new Temperature in Fahrenheit
+  ;; Receive: aTemp, a Temperature object
+  ;; Returns: a Temperature object, in Fahrenheit
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  (defn toFahrenheit [aTemp]
+    (if (= (getScale aTemp) "C")
+        (make-Temperature (+ (* (getDegrees aTemp) (/ 9.0 5.0)) 32) "F")
+    (if (= (getScale aTemp) "K") 
+            (make-Temperature (+ (* (- (getDegrees aTemp) 273.15) (/ 9.0 5.0)) 32) "F")
+    (make-Temperature (getDegrees aTemp) (getScale aTemp))
+        )
+      )
+  )
+
+  ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; ;; toCelsius converts a Temperature to a new Temperature in Celsius
+  ;; ;; Receive: aTemp, a Temperature object
+  ;; ;; Returns: a Temperature object, in Celsius
+  ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  (defn toCelsius [aTemp]
+    (if (= (getScale aTemp) "F")
+        (make-Temperature (* (- (getDegrees aTemp) 32) (/ 5.0 9.0)) "C")
+    (if (= (getScale aTemp) "K") 
+            (make-Temperature (- (getDegrees aTemp) 273.15) "C")
+    (make-Temperature (getDegrees aTemp) (getScale aTemp))
+        )
+      )
+  )
+
+  ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; ;; toKelvin converts a Temperature to a new Temperature in Kelvin
+  ;; ;; Receive: aTemp, a Temperature object
+  ;; ;; Returns: a Temperature object, in Kelvin
+  ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  (defn toKelvin [aTemp]
+    (if (= (getScale aTemp) "F")
+        (make-Temperature (+ (* (- (getDegrees aTemp) 32.0) (/ 5.0 9.0)) 273.15) "K")
+    (if (= (getScale aTemp) "C") 
+            (make-Temperature (+ (getDegrees aTemp) 273.15) "K")
+    (make-Temperature (getDegrees aTemp) (getScale aTemp))
+        )
+      )
+  )
+
+ ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; readTemperature reads a Temperature object from user input
+  ;; 
+  ;; Returns: a Temperature object, from user input
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  (defn readTemperature []
+      (make-Temperature (read-string (read-line)) (read-line))
+  )
+
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; printTemperature prints out a Temperature object
+  ;; Receive: aTemp, a Temperature object
+  ;; Returns: a Temperature object, in Fahrenheit
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  (defn printTemperature [aTemp]
+    (print (str (format "%.2f" (double (getDegrees aTemp)) ) "\t" (getScale aTemp) "\t"))
+  )
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; raise returns a Temperature with a degree amount higher than the Temperature received
+  ;; Receive: aTemp, a Temperature object, and a double, moreDegrees
+  ;; Returns: a Temperature object with a degree amount higher
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  (defn raise [aTemp moreDegrees]
+    (make-Temperature (+ (getDegrees aTemp) moreDegrees) (getScale aTemp))
+  )
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; lower returns a Temperature with a degree amount lower than the Temperature received
+  ;; Receive: aTemp, a Temperature object, and a double, moreDegrees
+  ;; Returns: a Temperature object with a degree amount lower
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  (defn lower [aTemp moreDegrees]
+    (make-Temperature (- (getDegrees aTemp) moreDegrees) (getScale aTemp))
+  )
+
+
+ ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; equals Checks if two Temps are equal
+  ;; Receive: aTemp, a Temperature object, and another Temperature object aTemp2
+  ;;  Returns: true if they are equal, false if the are not
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  (defn equals [aTemp aTemp2]
+    (if (= (getScale aTemp) (getScale aTemp2))
+      (= (getDegrees aTemp) (getDegrees aTemp2))
+      (= (:myDegrees (toFahrenheit aTemp)) (:myDegrees (toFahrenheit aTemp2)))
+    )
+  )
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; lessThan checks if one temp is less than the other
+  ;; Receive: aTemp, a Temperature object, and another Temperature object aTemp2
+  ;;  Returns: true if left is less than, false if not
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  (defn lessThan [aTemp aTemp2]
+    (if (= (getScale aTemp) (getScale aTemp2))
+      (< (getDegrees aTemp) (getDegrees aTemp2))
+      (< (:myDegrees (toFahrenheit aTemp)) (:myDegrees (toFahrenheit aTemp2)))
+    )
+  )
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; lessThan checks if one temp is less than the other
+  ;; Receive: aTemp, a Temperature object, and another Temperature object aTemp2
+  ;;  Returns: true if left is less than, false if not
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defn printTable [baseTemp limitTemp stepValue]
+  (loop
+    [base baseTemp
+    limit limitTemp
+    step stepValue]
+    (if (lessThan base limit)
+      (do
+        (printTemperature (toFahrenheit base))
+        (printTemperature (toCelsius base))
+        (printTemperature (toKelvin base))
+        (println)
+        (recur (raise base step) limitTemp stepValue)
+      )
+    )
+
+  )
+  
+  )
+]0;jav86@gold29: ~/CS214/projects/09/clojure/src[01;32mjav86@gold29[00m:[01;34m~/CS214/projects/09/clojure/src[00m$ cd ..
+]0;jav86@gold29: ~/CS214/projects/09/clojure[01;32mjav86@gold29[00m:[01;34m~/CS214/projects/09/clojure[00m$ cd ..at temperatureTester.clj Temperature.cljd src[Kat temperatureTester.clj Temperature.clj[16Pruby TemperatureTester.rb[14@cat Temperature.rb TemperatureTester.rb[17Pjava TemperatureTestercat Temperature.rb TemperatureTester.rb[14Pruby TemperatureTester.rbcat temperatureTester.clj Temperature.cljd src[Kat temperatureTester.clj Temperature.cljd ..[K[Kclojure -m T temperatureTester
+Testing converter methods...
+
+All tests passed!
+
+
+ Enter degrees and scale for baseTemp, 
+
+ enter degrees and scale for limitTemp, 
+
+ then finally enter a step value:
+
+0
+F
+100
+C
+2.5
+0.00	F	-17.78	C	255.37	K	
+2.50	F	-16.39	C	256.76	K	
+5.00	F	-15.00	C	258.15	K	
+7.50	F	-13.61	C	259.54	K	
+10.00	F	-12.22	C	260.93	K	
+12.50	F	-10.83	C	262.32	K	
+15.00	F	-9.44	C	263.71	K	
+17.50	F	-8.06	C	265.09	K	
+20.00	F	-6.67	C	266.48	K	
+22.50	F	-5.28	C	267.87	K	
+25.00	F	-3.89	C	269.26	K	
+27.50	F	-2.50	C	270.65	K	
+30.00	F	-1.11	C	272.04	K	
+32.50	F	0.28	C	273.43	K	
+35.00	F	1.67	C	274.82	K	
+37.50	F	3.06	C	276.21	K	
+40.00	F	4.44	C	277.59	K	
+42.50	F	5.83	C	278.98	K	
+45.00	F	7.22	C	280.37	K	
+47.50	F	8.61	C	281.76	K	
+50.00	F	10.00	C	283.15	K	
+52.50	F	11.39	C	284.54	K	
+55.00	F	12.78	C	285.93	K	
+57.50	F	14.17	C	287.32	K	
+60.00	F	15.56	C	288.71	K	
+62.50	F	16.94	C	290.09	K	
+65.00	F	18.33	C	291.48	K	
+67.50	F	19.72	C	292.87	K	
+70.00	F	21.11	C	294.26	K	
+72.50	F	22.50	C	295.65	K	
+75.00	F	23.89	C	297.04	K	
+77.50	F	25.28	C	298.43	K	
+80.00	F	26.67	C	299.82	K	
+82.50	F	28.06	C	301.21	K	
+85.00	F	29.44	C	302.59	K	
+87.50	F	30.83	C	303.98	K	
+90.00	F	32.22	C	305.37	K	
+92.50	F	33.61	C	306.76	K	
+95.00	F	35.00	C	308.15	K	
+97.50	F	36.39	C	309.54	K	
+100.00	F	37.78	C	310.93	K	
+102.50	F	39.17	C	312.32	K	
+105.00	F	40.56	C	313.71	K	
+107.50	F	41.94	C	315.09	K	
+110.00	F	43.33	C	316.48	K	
+112.50	F	44.72	C	317.87	K	
+115.00	F	46.11	C	319.26	K	
+117.50	F	47.50	C	320.65	K	
+120.00	F	48.89	C	322.04	K	
+122.50	F	50.28	C	323.43	K	
+125.00	F	51.67	C	324.82	K	
+127.50	F	53.06	C	326.21	K	
+130.00	F	54.44	C	327.59	K	
+132.50	F	55.83	C	328.98	K	
+135.00	F	57.22	C	330.37	K	
+137.50	F	58.61	C	331.76	K	
+140.00	F	60.00	C	333.15	K	
+142.50	F	61.39	C	334.54	K	
+145.00	F	62.78	C	335.93	K	
+147.50	F	64.17	C	337.32	K	
+150.00	F	65.56	C	338.71	K	
+152.50	F	66.94	C	340.09	K	
+155.00	F	68.33	C	341.48	K	
+157.50	F	69.72	C	342.87	K	
+160.00	F	71.11	C	344.26	K	
+162.50	F	72.50	C	345.65	K	
+165.00	F	73.89	C	347.04	K	
+167.50	F	75.28	C	348.43	K	
+170.00	F	76.67	C	349.82	K	
+172.50	F	78.06	C	351.21	K	
+175.00	F	79.44	C	352.59	K	
+177.50	F	80.83	C	353.98	K	
+180.00	F	82.22	C	355.37	K	
+182.50	F	83.61	C	356.76	K	
+185.00	F	85.00	C	358.15	K	
+187.50	F	86.39	C	359.54	K	
+190.00	F	87.78	C	360.93	K	
+192.50	F	89.17	C	362.32	K	
+195.00	F	90.56	C	363.71	K	
+197.50	F	91.94	C	365.09	K	
+200.00	F	93.33	C	366.48	K	
+202.50	F	94.72	C	367.87	K	
+205.00	F	96.11	C	369.26	K	
+207.50	F	97.50	C	370.65	K	
+210.00	F	98.89	C	372.04	K	
+]0;jav86@gold29: ~/CS214/projects/09/clojure[01;32mjav86@gold29[00m:[01;34m~/CS214/projects/09/clojure[00m$ clojure -m temperatureTester
+Testing converter methods...
+
+All tests passed!
+
+
+ Enter degrees and scale for baseTemp, 
+
+ enter degrees and scale for limitTemp, 
+
+ then finally enter a step value:
+
+0
+K
+212
+F
+20.0
+-459.67	F	-273.15	C	0.00	K	
+-423.67	F	-253.15	C	20.00	K	
+-387.67	F	-233.15	C	40.00	K	
+-351.67	F	-213.15	C	60.00	K	
+-315.67	F	-193.15	C	80.00	K	
+-279.67	F	-173.15	C	100.00	K	
+-243.67	F	-153.15	C	120.00	K	
+-207.67	F	-133.15	C	140.00	K	
+-171.67	F	-113.15	C	160.00	K	
+-135.67	F	-93.15	C	180.00	K	
+-99.67	F	-73.15	C	200.00	K	
+-63.67	F	-53.15	C	220.00	K	
+-27.67	F	-33.15	C	240.00	K	
+8.33	F	-13.15	C	260.00	K	
+44.33	F	6.85	C	280.00	K	
+80.33	F	26.85	C	300.00	K	
+116.33	F	46.85	C	320.00	K	
+152.33	F	66.85	C	340.00	K	
+188.33	F	86.85	C	360.00	K	
+]0;jav86@gold29: ~/CS214/projects/09/clojure[01;32mjav86@gold29[00m:[01;34m~/CS214/projects/09/clojure[00m$ exit
+
+Script done on 2022-03-19 20:45:15-04:00 [COMMAND_EXIT_CODE="0"]
