@@ -1,0 +1,71 @@
+V "GNAT Lib v7"
+P SS ZX
+
+RN
+RV NO_IO
+RV NO_SECONDARY_STACK
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV SPARK_05
+
+U name_package%b	name_package.adb	3d2fe1a4 NE OO PK
+W ada%s			ada.ads			ada.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W system.concat_5%s	s-conca5.adb		s-conca5.ali
+W system.secondary_stack%s  s-secsta.adb	s-secsta.ali
+
+U name_package%s	name_package.ads	08f6d476 EE NE OO PK
+
+D ada.ads		20170106103348 76789da1 ada%s
+D a-except.ads		20151016123252 291912d5 ada.exceptions%s
+D a-ioexce.ads		20140225151544 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20141120112812 119b8fb3 ada.streams%s
+D a-tags.ads		20151016130316 01f5e3ef ada.tags%s
+D a-textio.ads		20140717063745 386df5d4 ada.text_io%s
+D a-unccon.ads		20170106103348 31484697 ada.unchecked_conversion%s
+D interfac.ads		20160502101001 5ab55268 interfaces%s
+D i-cstrea.ads		20140801100435 e53d8b8e interfaces.c_streams%s
+D name_package.ads	20220316181001 08f6d476 name_package%s
+D name_package.adb	20220316180909 0db4c006 name_package%b
+D system.ads		20170510173650 4635ec04 system%s
+D s-conca5.ads		20140225151544 875e432e system.concat_5%s
+D s-crtl.ads		20141120112812 0ebbdb71 system.crtl%s
+D s-exctab.ads		20140225151139 54135002 system.exception_table%s
+D s-ficobl.ads		20140718105747 078245e4 system.file_control_block%s
+D s-parame.ads		20140801093848 7e2a0d7f system.parameters%s
+D s-secsta.ads		20170112134946 9751b57e system.secondary_stack%s
+D s-soflin.ads		20151020124036 14e1eb6c system.soft_links%s
+D s-stache.ads		20140225151139 a37c21ec system.stack_checking%s
+D s-stalib.ads		20151112104907 09bd3940 system.standard_library%s
+D s-stoele.ads		20140225151139 2dc34a04 system.storage_elements%s
+D s-traent.ads		20140730135025 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20160502101423 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20140718092328 1b7d22d2 system.wch_con%s
+X 1 ada.ads
+16K9*Ada 20e8 11|7r6 7r23
+X 6 a-textio.ads
+49K13*Text_IO 471e16 11|7w10 7r27
+242U14*Put 11|83s5
+X 10 name_package.ads
+8K9*Name_Package 71E5 81l5 81e17 11|9b14 86l5 86t17
+10R6*Name 21r26 30r29 39r30 48r28 57r25 66r32 73c10 78e19 11|21r26 35r29
+. 46r30 57r28 68r32 81r24
+21U13*Init 21<18 22>18 22>25 22>33 11|21b13 27l7 27t11
+21r18 Nm{10R6} 11|21b18 24m5 25m5 26m5
+22a18 First{string} 11|22b18 24r19
+22a25 Middle{string} 11|22b25 25r20
+22a33 Last{string} 11|22b33 26r18
+30V12*getFirst{string} 30>21 11|35b12 38l7 38t15
+30r21 Nm{10R6} 11|35b22 37r12
+39V12*getMiddle{string} 39>22 11|46b12 49l7 49t16
+39r22 Nm{10R6} 11|46b23 48r13
+48V12*getLast{string} 48>20 11|57b12 60l7 60t14
+48r20 Nm{10R6} 11|57b21 59r13
+57U13*Put 57>17 11|81b13 84l7 84t10
+57r17 Nm{10R6} 11|81b17 83r22
+66V12*getFullName{string} 66>24 11|68b12 73l7 73t18 83s10
+66r24 Nm{10R6} 11|68b25 70r12 71r14 72r14
+71i5 NAME_SIZE{positive} 77r32
+75a13*myFirst{string} 11|24m8 37r15 70r15
+76a13*myMiddle{string} 11|25m8 48r16 71r17
+77a13*MyLast{string} 11|26m8 59r16 72r17
+

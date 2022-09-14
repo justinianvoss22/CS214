@@ -1,0 +1,112 @@
+Script started on 2022-02-23 14:18:21-05:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="80" LINES="24"]
+]0;jav86@gold27: ~/CS214/labs/07/clojure[01;32mjav86@gold27[00m:[01;34m~/CS214/labs/07/clojure[00m$ cat average.clj
+cat: average.clj: No such file or directory
+]0;jav86@gold27: ~/CS214/labs/07/clojure[01;32mjav86@gold27[00m:[01;34m~/CS214/labs/07/clojure[00m$ cd src
+]0;jav86@gold27: ~/CS214/labs/07/clojure/src[01;32mjav86@gold27[00m:[01;34m~/CS214/labs/07/clojure/src[00m$ cat   cd srcat average.clj
+;; average.clj "test-drives" function average().
+;;
+;; Output: the average of a sequence of numbers.
+;;
+;; Usage: clojure -m average
+;;
+;; Begun by: Dr. Adams, CS 214 at Calvin College.
+;; Completed by: Justin Voss
+;; Date: 2/24/22
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(ns average)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; sum() sums the values in a vector.       
+;; Receive: aVec, a vector of numbers.
+;; Return: the sum of the values in aVec.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;; harder (recursive) solution
+(defn sum [aVec]
+  (if (vector? aVec)      ; if aVec is a vector
+    (if (empty? aVec)     ;   if aVec is empty:
+      0.0                 ;     return 0
+      (+ (peek aVec)      ;   else return the last value
+         (sum (pop aVec)) ;    + sum(all but the last value)
+      )
+    )
+  )
+)
+
+;; easier (non-recursive) solution
+(defn sum2 [aVec]
+  (if (vector? aVec)      ; if aVec is a vector:
+    (if (empty? aVec)     ;   if aVec is empty:
+      0.0                 ;    return 0
+      (reduce + aVec)     ;   else reduce aVec using +
+    )
+  )
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; average() computes the average of a vector of numbers.
+;; Receive: aVec, a vector of numbers. 
+;; Return: the average of the numbers in aVec.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   
+(defn average [aVec]
+  (if (vector? aVec)                  ; checks if it is a vector
+    (if (empty? aVec)                 ; checks if it is empty
+      0.0                             ; returns 0
+      (/ (sum aVec) (count aVec)))))  ; returns the average, by computing the sum and dividing that by the number of items in the vector
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; main function to test functions sum() and average()
+;; Output: the sum and average of some test vectors.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defn -main []
+  (let
+    [ emptyVec []
+      testVec  [9.0 8.0 7.0 6.0]
+    ]
+
+    (print "\nThe empty vec: " emptyVec) 
+    (print "\nThe test  vec: " testVec) 
+    (println "\n")
+
+    ;; Test sum()...
+    (printf "\nThe first sum is %.3f\n" (sum emptyVec))
+    (printf "The second sum is %.3f\n" (sum testVec))
+
+    ;; Test average()...
+    (printf "\nThe first average is %.3f\n" (average emptyVec))
+    (printf "The second average is %.3f\n" (average testVec))
+    (println "\n")
+
+    ;; Test sum2()...
+    (printf "\nThe first sum2 is %.3f\n" (sum2 emptyVec))
+    (printf "The second sum2 is %.3f\n" (sum2 testVec))
+    (println "\n")
+  )
+)
+
+]0;jav86@gold27: ~/CS214/labs/07/clojure/src[01;32mjav86@gold27[00m:[01;34m~/CS214/labs/07/clojure/src[00m$ cd ..
+]0;jav86@gold27: ~/CS214/labs/07/clojure[01;32mjav86@gold27[00m:[01;34m~/CS214/labs/07/clojure[00m$ clojure -m average
+
+The empty vec:  []
+The test  vec:  [9.0 8.0 7.0 6.0]
+
+
+The first sum is 0.000
+The second sum is 30.000
+
+The first average is 0.000
+The second average is 7.500
+
+
+
+The first sum2 is 0.000
+The second sum2 is 30.000
+
+
+]0;jav86@gold27: ~/CS214/labs/07/clojure[01;32mjav86@gold27[00m:[01;34m~/CS214/labs/07/clojure[00m$ exit
+
+Script done on 2022-02-23 14:18:47-05:00 [COMMAND_EXIT_CODE="0"]
