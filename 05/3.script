@@ -1,74 +1,0 @@
-Script started on 2022-02-10 12:39:26-05:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="80" LINES="24"]
-]0;jav86@gold20: ~/CS214/labs/05[01;32mjav86@gold20[00m:[01;34m~/CS214/labs/05[00m$ (map inc [1 2 3 ] 4])
-
-Command 'map' not found, but there are 29 similar ones.
-
-]0;jav86@gold20: ~/CS214/labs/05[01;32mjav86@gold20[00m:[01;34m~/CS214/labs/05[00m$ scir    clojure
-[KClojure 1.10.1
-[Kuser=> [Kuser=> [Kuser=> (squareSquare -3)user=> [K(map inc [1 2 3 4][1 2 3 4])user=> (map inc [1 2 3 4])user=> [K(map inc [1 2 3 4])
-(2 3 4 5)
-user=> [Kuser=> [Kuser=> (map inc [1 2 3 4])[1P[1Pc[1P[1@- [1 2 3 4])user=> [K(map - [1 2 3 4])
-(-1 -2 -3 -4)
-user=> [Kuser=> [Kuser=> (map - [1 2 3 4]) 3 4] )[)1) )2) )3) )4)])[1 2 3 4])user=> [K(map - [1 2 3 4] [1 2 3 4])
-(0 0 0 0)
-user=> [Kuser=> [Kuser=> (map - [1 2 3 4] [1 2 3 4])][1P)[1P)[1P)[1P)[1P)[1P)[1P)[1P)[1P)[1P)[1P[1@e[1@v[1@e[1@n[1@? [1@ user=> [K(map even?  [1 2 3 4])
-(false true false true)
-user=> [Kuser=> [Kuser=> (map even?  [1 2 3 4])user=> (map [5@- [1 2 3 4] [1 2 3 4]) 4[1P[1P[1P[1P[1P[1P[1P[1@"[1@A[1@"[1@ [1@"[1@B[1@"[1@ [1@"[1@C[1@"4[1P[1P[1P[1P[1P[1P[1P[1@"[1@a[1@"[1@ [1@"[1@b[1@"[1@ [1@"[1@c[1@"[1P[1@s[1@t[1@r [1@ [1P ["a" "b" "c"] ["A" "B" "C"])user=> [K(map str ["a" "b" "c"] ["A" "B" "C"])
-("aA" "bB" "cC")
-user=> [Kuser=> [Kuser=> (map str ["a" "b" "c"] ["A" "B" "C"])[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P)[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1@[[1@1[1@1]])[11][1@ [1@{[1P]])[[11] ][1P)[1@[[1@1[1@1]])[11][1@ [1P[1P)[1@ [1@2[1@2]])[11 22][1@ [1@[[1@1[1@1[1@ [1@2[1@2[1@ [1@3[1@3]])[11 22 33]])user=> [K(map str [[11] [11 22] [11 22 33]])
-("[11]" "[11 22]" "[11 22 33]")
-user=> [Kuser=> [Kuser=> (map str [[11] [11 22] [11 22 33]])[1P[1P[1P[1@c[1@o[1@u[1@n[1@tuser=> [K(map count [[11] [11 22] [11 22 33]])
-(1 2 3)
-user=> [Kuser=> [Kuser=> ( (map count [[11] [11 22] [11 22 33]])user=> (map [2Pstr [[11] [11 22] [11 22 33]])user=> (map str [[2@"a" "b" "c"] ["A" "B" "C"])user=> (map [15Peven?  [1 2 3 4])user=> (map [5@- [1 2 3 4] [1 2 3 4])[1P[1@+ [1@ [1P[K(map + [1 2 3 4] [1 2 3 4])
-(2 4 6 8)
-user=> [Kuser=> [Kuser=> (map + [1 2 3 4] [1 2 3 4])[1P[1@*[K(map * [1 2 3 4] [1 2 3 4])
-(1 4 9 16)
-user=> [Kuser=> [Kuser=> (Math/abs -3)user=> (Math/abs -3)user=> [K(Math/abs -3)
-3
-user=> [Kuser=> [Kuser=> (map Math/abs [-1 2 -3 4 -5][-1 2 -3 4 -5])user=> (map Math/abs [-1 2 -3 4 -5])user=> [K(map Math/abs [-1 2 -3 4 -5])
-Syntax error compiling at (REPL:1:1).
-Unable to find static field: abs in class java.lang.Math
-user=> [Kuser=> [Kuser=> (map Math/abs [-1 2 -3 4 -5]) Math/abs [-1 2 -3 4 -5]))                        (fn [x][x] (if (< x 0)(< x 0) (-x_ )(-x) x)(if (< x 0) (-x) x))user=> (map (fn [x] (if (< x 0) (-x) x)) )user=> (map (fn [x] (if (< x 0) (-x) x)) [-1 2 -3 4 -5][-1 2 -3 4 -5])user=> (map (fn [x] (if (< x 0) (-x) x)) [-1 2 -3 4 -5])user=> [K(map (fn [x] (if (< x 0) (-x) x)) [-1 2 -3 4 -5])
-[KSyntax error compiling at (REPL:1:26).
-Unable to resolve symbol: -x in this context
-user=> [Kuser=> [Kuser=> (map (fn [x] (if (< x 0) (-x) x)) [-1 2 -3 4 -5])if (< x 0) (--[1@ x) x)) [-1 2 -3 4 -5])user=> [K(map (fn [x] (if (< x 0) (- x) x)) [-1 2 -3 4 -5])
-(1 2 3 4 5)
-user=> [Kuser=> [Kuser=> (defn subtract -n 2 [5 6 7 8][5 6 7 8])user=> (defn subtract -n 2 [5 6 7 8])               -n [n sequence][n sequence] (map (fn [x][x] (- x n)(- x n))(fn [x] (- x n)) sequence)(map (fn [x] (- x n)) sequence))user=> (defn subtract -n [n sequence] (map (fn [x] (- x n)) sequence))user=> [K(defn subtract -n [n sequence] (map (fn [x] (- x n)) sequence))
-Syntax error macroexpanding clojure.core/defn at (REPL:1:1).
--n - failed: vector? at: [:fn-tail :arity-1 :params] spec: :clojure.core.specs.alpha/param-list
--n - failed: (or (nil? %) (sequential? %)) at: [:fn-tail :arity-n :bodies] spec: :clojure.core.specs.alpha/params+body
-user=> [Kuser=> [Kuser=> (defn subtract -n [n sequence] (map (fn [x] (- x n)) sequence))user=> [K(defn subtract -n [n sequence] (map (fn [x] (- x n)) sequence))
-Syntax error macroexpanding clojure.core/defn at (REPL:1:1).
--n - failed: vector? at: [:fn-tail :arity-1 :params] spec: :clojure.core.specs.alpha/param-list
--n - failed: (or (nil? %) (sequential? %)) at: [:fn-tail :arity-n :bodies] spec: :clojure.core.specs.alpha/params+body
-user=> [Kuser=> [Kuser=> (defn subtract -n [n sequence] (map (fn [x] (- x n)) sequence)) [1P-n [n sequence] (map (fn [x] (- x n)) sequence))user=> [K(defn subtract-n [n sequence] (map (fn [x] (- x n)) sequence))
-#'user/subtract-n
-user=> [Kuser=> [Kuser=> (subtract-n 2 [5 6 7 80 ][5 6 7 8])user=> (subtract-n 2 [5 6 7 8])user=> [K(subtract-n 2 [5 6 7 8])
-(3 4 5 6)
-user=> [Kuser=> [Kuser=> 9filter odd? [1 2 3 4][1 2 3 4])user=> [K9filter odd? [1 2 3 4])
-Syntax error reading source at (REPL:18:8).
-Invalid number: 9filter
-#object[clojure.core$odd_QMARK_ 0x54562ea6 "clojure.core$odd_QMARK_@54562ea6"]
-[1 2 3 4]
-Syntax error reading source at (REPL:18:24).
-Unmatched delimiter: )
-user=> [Kuser=> [Kuser=> 9filter odd? [1 2 3 4])[1P[1@([K(filter odd? [1 2 3 4])
-(1 3)
-user=> [Kuser=> [Kuser=> (filter odd? [1 2 3 4])odd[1P[1P[1P[1@e[1@v[1@e[1@nuser=> [K(filter even? [1 2 3 4])
-(2 4)
-user=> [Kuser=> [Kuser=> (filter even? [1 2 3 4])n[1P[1P[1P[1P[1@n[1@e[1@guser=> [K(filter neg? [1 2 3 4])
-()
-user=> [Kuser=> [Kuser=> (filter neg? [1 2 3 4])? [[1@-1 [1P[1@ 2[1P[1@1 [1@-[1@2[1@ [1@2[1@ [1@-3 4[1P[1@3]) )user=> (filter neg? [-1 1 -2 2 -3 3])user=> [K(filter neg? [-1 1 -2 2 -3 3])
-(-1 -2 -3)
-user=> [Kuser=> [Kuser=> (filter neg? [-1 1 -2 2 -3 3])[1P[1P[1P[1@p[1@o[1@suser=> [K(filter pos? [-1 1 -2 2 -3 3])
-(1 2 3)
-user=> [Kuser=> [Kuser=> (filter (fn [x][x] (and (pos? x)(pos? x) (even? x)(even? x))(and (pos? x) (even? x)))user=> (filter (fn [x] (and (pos? x) (even? x))) [-1 1 -2 2 -3 3 -4 4][-1 1 -2 2 -3 3 -4 4])user=> (filter (fn [x] (and (pos? x) (even? x))) [-1 1 -2 2 -3 3 -4 4])user=> [K(filter (fn [x] (and (pos? x) (even? x))) [-1 1 -2 2 -3 3 -4 4])
-(2 4)
-user=> [Kuser=> [Kuser=> (filter (fn [x] (and (pos? x) (even? x))) [-1 1 -2 2 -3 3 -4 4])[1P[1P[1Pn[1P[1@o[1@d[1@ds[1P[1P[1P[1@n[1@e[1@guser=> [K(filter (fn [x] (and (neg? x) (odd? x))) [-1 1 -2 2 -3 3 -4 4])
-(-1 -3)
-user=> [Kuser=> [Kuser=> (filter (fn [x] (and (neg? x) (odd? x))) [-1 1 -2 2 -3 3 -4 4])d[1P[1P[1P[1@o[1@ruser=> [K(filter (fn [x] (or (neg? x) (odd? x))) [-1 1 -2 2 -3 3 -4 4])
-(-1 1 -2 -3 3 -4)
-user=> [Kuser=> [Kuser=> 
-[K]0;jav86@gold20: ~/CS214/labs/05[01;32mjav86@gold20[00m:[01;34m~/CS214/labs/05[00m$ exit
-
-Script done on 2022-02-10 12:53:01-05:00 [COMMAND_EXIT_CODE="0"]

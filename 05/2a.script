@@ -1,22 +1,0 @@
-Script started on 2022-02-10 12:35:41-05:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="80" LINES="24"]
-]0;jav86@gold20: ~/CS214/labs/05[01;32mjav86@gold20[00m:[01;34m~/CS214/labs/05[00m$ clojure
-[KClojure 1.10.1
-[Kuser=> [Kuser=> [Kuser=> #(* % %)(* % %)[K#(* % %)
-#object[user$eval3$fn__4 0x7668d560 "user$eval3$fn__4@7668d560"]
-user=> [Kuser=> [Kuser=> squareScq  quare #(* % %)(* % %) ) ) )[1@(squareSquare #(* % %) ) )user=> (squareSquare #(* % %) )user=> [K(squareSquare #(* % %) )
-Syntax error compiling at (REPL:1:1).
-Unable to resolve symbol: squareSquare in this context
-user=> [Kuser=> [Kuser=> (squareSquare #(* % %) )[1@d[1@e[1@f[1@ squareSquare #(* % %) )user=> [K(def squareSquare #(* % %) )
-#'user/squareSquare
-user=> [Kuser=> [Kuser=> s (squares Square 4)user=> (squareSquare 4)4[1P)2))user=> [K(squareSquare 2)
-4
-user=> [Kuser=> [Kuser=> (squareSquare 2)[1@-user=> [K(squareSquare -2)
-4
-user=> [Kuser=> [Kuser=> (squareSquare -2)[1P2[1P)3))user=> [K(squareSquare 3)
-9
-user=> [Kuser=> [Kuser=> (squareSquare 3)[1@-user=> [K(squareSquare -3)
-9
-user=> [Kuser=> [Kuser=> 
-[K]0;jav86@gold20: ~/CS214/labs/05[01;32mjav86@gold20[00m:[01;34m~/CS214/labs/05[00m$ exit
-
-Script done on 2022-02-10 12:38:37-05:00 [COMMAND_EXIT_CODE="0"]

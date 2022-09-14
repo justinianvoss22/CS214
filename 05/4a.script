@@ -1,19 +1,0 @@
-Script started on 2022-02-10 13:28:54-05:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="80" LINES="24"]
-]0;jav86@gold20: ~/CS214/labs/05[01;32mjav86@gold20[00m:[01;34m~/CS214/labs/05[00m$ (defn sumSquares [sequence] (reduce + (map * sw eque nces  e sequence))  ))              [A]0;jav86@gold20: ~/CS214/labs/05[01;32mjav86@gold20[00m:[01;34m~/CS214/labs/05[00m$ (defn sumSquares [sequence] (reduce + (map * seque [K[A]0;jav86@gold20: ~/CS214/labs/05[01;32mjav86@gold20[00m:[01;34m~/CS214/labs/05[00m$ (defn sumSquares [sequence] (reduce + (map * sequ[K
-[K[A]0;jav86@gold20: ~/CS214/labs/05[01;32mjav86@gold20[00m:[01;34m~/CS214/labs/05[00m$ (defn sumSquares [sequence] (reduce + (map * sequ                                                 clojure
-[KClojure 1.10.1
-[Kuser=> [Kuser=> [Kuser=> (defn sumSquare [sequence[ ][sequence] (reduce + (map * sequence sequence)(map * sequence sequence))user=> (defn sumSquare [sequence] (reduce + (map * sequence sequence)))user=> (defn sumSquare [sequence] (reduce + (map * sequence sequence)))user=> [K(defn sumSquare [sequence] (reduce + (map * sequence sequence)))
-[K#'user/sumSquare
-user=> [Kuser=> [Kuser=> su  (sumSquares '(1 2 3)(1 2 3))user=> [K(sumSquares '(1 2 3))
-Syntax error compiling at (REPL:1:1).
-Unable to resolve symbol: sumSquares in this context
-user=> [Kuser=> [Kuser=> (sumSquares '(1 2 3))[1Puser=> [K(sumSquare '(1 2 3))
-14
-user=> [Kuser=> [Kuser=> (sumSquare '(1 2 3))3[1@ [1@4[1@ [1@5user=> [K(sumSquare '(1 2 3 4 5))
-55
-user=> [Kuser=> [Kuser=> (sumSquare '(1 2 3 4 5))[K[1P)[1P)[1P)[1P)[1P)[1P)[1P)[1P)[1P)[1P)[1P)[)-)1) )-)2) )-)3) )0) )1)})[1P)])[-1 -2 -3 0 1]user=> [K(sumSquare [-1 -2 -3 0 1])
-15
-user=> [Kuser=> [Kuser=> 
-[K]0;jav86@gold20: ~/CS214/labs/05[01;32mjav86@gold20[00m:[01;34m~/CS214/labs/05[00m$ exit
-
-Script done on 2022-02-10 13:32:00-05:00 [COMMAND_EXIT_CODE="0"]

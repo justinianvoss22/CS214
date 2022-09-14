@@ -1,15 +1,0 @@
-Script started on 2022-02-10 12:07:32-05:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="80" LINES="24"]
-]0;jav86@gold20: ~/CS214/labs/05[01;32mjav86@gold20[00m:[01;34m~/CS214/labs/05[00m$ (fn [x] (+ x x) )
-bash: syntax error near unexpected token `('
-]0;jav86@gold20: ~/CS214/labs/05[01;32mjav86@gold20[00m:[01;34m~/CS214/labs/05[00m$ clojure
-[KClojure 1.10.1
-[Kuser=> [Kuser=> [Kuser=> (fn ( [x][x] (x + x x_   )(+ x x) )user=> (fn [x] (+ x x) )user=> [K(fn [x] (+ x x) )
-[K#object[user$eval136$fn__137 0x29182679 "user$eval136$fn__137@29182679"]
-user=> [Kuser=> [Kuser=> ((fn [x][x] (+ (* x x)(* x x) (*[1@+[1P[1@ [1@y] (+ (* x x) (* y y)(* y y))(+ (* x x) (* y y)))user=> ((fn [x y] (+ (* x x) (* y y))) )user=> ((fn [x y] (+ (* x x) (* y y))) 3 4 )user=> ((fn [x y] (+ (* x x) (* y y))) 3 4 )user=> [K((fn [x y] (+ (* x x) (* y y))) 3 4 )
-25
-user=> [Kuser=> [Kuser=> ((fn [x][x] (+xx   x x)(+ x x))user=> ((fn [x] (+ x x)) 21)user=> ((fn [x] (+ x x)) 21)user=> [K((fn [x] (+ x x)) 21)
-42
-user=> [Kuser=> [Kuser=> 
-[K]0;jav86@gold20: ~/CS214/labs/05[01;32mjav86@gold20[00m:[01;34m~/CS214/labs/05[00m$ exit
-
-Script done on 2022-02-10 12:10:47-05:00 [COMMAND_EXIT_CODE="0"]

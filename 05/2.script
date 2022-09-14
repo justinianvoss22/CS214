@@ -1,28 +1,0 @@
-Script started on 2022-02-10 12:19:41-05:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="80" LINES="24"]
-]0;jav86@gold20: ~/CS214/labs/05[01;32mjav86@gold20[00m:[01;34m~/CS214/labs/05[00m$ ( (def triple (n fn [x] (* x 3)))                             clojure
-[KClojure 1.10.1
-[Kuser=> [Kuser=> [Kuser=> (def triple (fn [s x][x] (* x 3)(* x 3))(fn [x] (* x 3)))user=> (def triple (fn [x] (* x 3)))user=> [K(def triple (fn [x] (* x 3)))
-[K#'user/triple
-user=> [Kuser=> [Kuser=> (triple 4)user=> (triple 4)user=> [K(triple 4)
-12
-user=> [Kuser=> [Kuser=> P { ( P (defn triple2 [x][x] (* x 3)(* x 3))user=> (defn triple2 [x] (* x 3))user=> [K(defn triple2 [x] (* x 3))
-#'user/triple2
-user=> [Kuser=> [Kuser=> tr  (triple2 8_ )user=> (triple2 8)user=> [K(triple2 8)
-24
-user=> [Kuser=> [Kuser=> (#(8 % 3)(8 % 3) 4)user=> (#(8 % 3) 4)_ ) user=> [K(#(8 % 3) 4)
-Execution error (ClassCastException) at user/eval144$fn (REPL:1).
-class java.lang.Long cannot be cast to class clojure.lang.IFn (java.lang.Long is in module java.base of loader 'bootstrap'; clojure.lang.IFn is in unnamed module of loader 'app')
-user=> [Kuser=> [Kuser=> #(  (#(8 % 3) 4)[1P[1@*[1P8[1P[1P[1@#[1@([1@* % 3) 4)user=> [K(#(* % 3) 4)
-12
-user=> [Kuser=> [Kuser=> #(+ %1 %1)(+ %1 %1) (* %2 %2)(* %2 %2) 3 4) )[1@(+[1@ ([1@* [1@  %1 %1) [1P %1 %1) (* %1) (* %2 %2) 3 4)user=> [K#(+ (* %1 %1) (* %2 %2) 3 4)
-#object[user$eval158$fn__159 0x3f36b447 "user$eval158$fn__159@3f36b447"]
-user=> [Kuser=> \ 9 #(+ (* %1 %1) (* %2 %2) 3 4)[1P([1@#[1@ [1@( + (* [1P+ (* %1 %1) (* %2 %2)[1@)user=> (#(+ (* %1 %1) (* %2 %2)) 3 4) )user=> (#(+ (* %1 %1) (* %2 %2)) 3 4)user=> [K(#(+ (* %1 %1) (* %2 %2)) 3 4)
-25
-user=> [Kuser=> [Kuser=> ( (def sum2Squares #(+ (* %1 %1)(* %1 %1) (* %2 %2)(* %2 %2))(+ (* %1 %1) (* %2 %2)))user=> (def sum2Squares #(+ (* %1 %1) (* %2 %2)))user=> [K(def sum2Squares #(+ (* %1 %1) (* %2 %2)))
-#'user/sum2Squares
-user=> [Kuser=> [Kuser=> (sum2Swq  quares 3 4)user=> (sum2Squares 3 4)user=> [K(sum2Squares 3 4)
-25
-user=> [Kuser=> [Kuser=> 
-[K]0;jav86@gold20: ~/CS214/labs/05[01;32mjav86@gold20[00m:[01;34m~/CS214/labs/05[00m$ exit
-
-Script done on 2022-02-10 12:28:57-05:00 [COMMAND_EXIT_CODE="0"]
